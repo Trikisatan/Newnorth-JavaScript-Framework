@@ -9,27 +9,33 @@ Newnorth.AJAX = {
 		request.open("GET", uri, false);
 		request.overrideMimeType("text/plain; charset=x-user-defined");
 		request.send();
+
 		if(request.status != 200 && request.status != 0) {
 			throw "Unable to GET \"" + uri + "\".";
 		}
+
 		return request.response;
 	},
 	GetJSON: function(uri) {
 		var request = new XMLHttpRequest();
 		request.open("GET", uri, false);
 		request.send();
+
 		if(request.status != 200 && request.status != 0) {
 			throw "Unable to GET \"" + uri + "\".";
 		}
+
 		return JSON.parse(request.responseText);
 	},
 	GetText: function(uri) {
 		var request = new XMLHttpRequest();
 		request.open("GET", uri, false);
 		request.send();
+
 		if(request.status != 200 && request.status != 0) {
 			throw "Unable to GET \"" + uri + "\".";
 		}
+
 		return request.responseText;
 	},
 };
