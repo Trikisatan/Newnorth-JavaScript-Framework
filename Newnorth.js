@@ -41,6 +41,7 @@ Newnorth.AJAX = {
 	PostJSON: function(uri, data) {
 		var request = new XMLHttpRequest();
 		request.open("POST", uri, false);
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		request.send(data);
 
 		if(request.status != 200 && request.status != 0) {
