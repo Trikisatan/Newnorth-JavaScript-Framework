@@ -38,6 +38,17 @@ Newnorth.AJAX = {
 
 		return request.responseText;
 	},
+	PostJSON: function(uri, data) {
+		var request = new XMLHttpRequest();
+		request.open("POST", uri, false);
+		request.send(data);
+
+		if(request.status != 200 && request.status != 0) {
+			throw "Unable to POST \"" + uri + "\".";
+		}
+
+		return JSON.parse(request.responseText);
+	},
 };
 Newnorth.Event = function() {
 	this.Listeners = [];
