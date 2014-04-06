@@ -1,21 +1,5 @@
-Newnorth = {
-	Either: function(v1, v2) {
-		return v1 === undefined ? v2 : v1;
-	},
-};
+Newnorth = {};
 Newnorth.AJAX = {
-	GetBinary: function(uri) {
-		var request = new XMLHttpRequest();
-		request.open("GET", uri, false);
-		request.overrideMimeType("text/plain; charset=x-user-defined");
-		request.send();
-
-		if(request.status != 200 && request.status != 0) {
-			throw "Unable to GET \"" + uri + "\".";
-		}
-
-		return request.response;
-	},
 	GetJSON: function(uri) {
 		var request = new XMLHttpRequest();
 		request.open("GET", uri, false);
@@ -49,6 +33,18 @@ Newnorth.AJAX = {
 		}
 
 		return JSON.parse(request.responseText);
+	},
+	PostText: function(uri, data) {
+		var request = new XMLHttpRequest();
+		request.open("POST", uri, false);
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		request.send(data);
+
+		if(request.status != 200 && request.status != 0) {
+			throw "Unable to POST \"" + uri + "\".";
+		}
+
+		return request.responseText;
 	},
 };
 Newnorth.Event = function() {
